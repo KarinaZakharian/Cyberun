@@ -13,7 +13,15 @@ const customRenderers = [
   { tester: percentageFieldTester, renderer: PercentageField }
 ];
 
-const initialData = {}; 
+const initialData = {
+  name: "Karina",
+  countries: [
+    {
+      country: "Ukraine",
+      percentage: 100
+    }
+  ]
+};
 
 const App = () => {
   const [data, setData] = useState(initialData);
@@ -32,6 +40,7 @@ const App = () => {
         const responseData = await response.json();
         const countryNames = responseData.map(country => country.name.common);
         countryNames.push('Inconnu'); 
+    
     
         const updatedSchema = JSON.parse(JSON.stringify(schema));
         updatedSchema.properties.countries.items.properties.country.enum = countryNames;
