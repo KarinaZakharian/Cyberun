@@ -20,9 +20,7 @@ const App = () => {
   const [schema, setSchema] = useState(initialSchema);
   const [isValid, setIsValid] = useState(false);
 
-  const widgets = {
-    percentageWidget: PercentageField
-  };
+ 
 
   useEffect(() => {
     const fetchCountriesAndUpdateSchema = async () => {
@@ -33,6 +31,8 @@ const App = () => {
         }
         const responseData = await response.json();
         const countryNames = responseData.map(country => country.name.common);
+        countryNames.push('Inconnu'); 
+    
         const updatedSchema = JSON.parse(JSON.stringify(schema));
         updatedSchema.properties.countries.items.properties.country.enum = countryNames;
         setSchema(updatedSchema);
@@ -55,7 +55,6 @@ const App = () => {
       <JsonForms
         schema={schema}
         uischema={uischema}
-        widgets={widgets}
         data={data}
         renderers={customRenderers}
         cells={materialCells}
