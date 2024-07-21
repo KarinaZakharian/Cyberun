@@ -35,6 +35,7 @@ export const uischema = {
             {
               type: "Control",
               scope: "#/properties/country",
+              
               options: {
                 autocomplete: true  
               }

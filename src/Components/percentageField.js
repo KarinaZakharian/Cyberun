@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withJsonFormsControlProps } from '@jsonforms/react';
+import "./input.css";
 
 const PercentageField = ({ data, handleChange, path }) => {
   const [isEmpty, setIsEmpty] = useState(!data); // Track if the field is empty or not
@@ -22,13 +23,15 @@ const PercentageField = ({ data, handleChange, path }) => {
     }}>
       <input
         type="number"
+          className="custom-input"
         value={data || ''}
         onChange={handleInputChange}
+        placeholder='Percentage *'
         style={{ 
           padding: '16px 14px', 
           width: 'calc(100% - 30px)', 
           height: '100%',
-          border: `1px solid ${isEmpty ? 'red' : '#bdbdbd'}`, 
+          border: `1px solid ${isEmpty ? '#d32f2f' : '#bdbdbd'}`, 
           borderRadius: '4px',
           boxSizing: 'border-box', 
           font: 'inherit',
@@ -37,7 +40,8 @@ const PercentageField = ({ data, handleChange, path }) => {
           background: 'none', 
           margin: '0',
           display: 'block',
-          outline: 'none'
+          outline: 'none',
+          '::placeholder': { color: 'red' } 
         }}
       />
       <span style={{ 
